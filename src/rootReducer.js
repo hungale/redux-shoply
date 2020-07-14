@@ -1,16 +1,20 @@
 import {products} from "./data.json";
-// console.log(Object.entries(products), Object.values(products));
+import { ADD, DELETE } from "./actionTypes";
+
 const INITIAL_STATE = { products , cart: [] };
-// console.log("Initial store:", INITIAL_STATE);
+console.log("Initial store:", INITIAL_STATE);
+
 
 const rootReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case "INCREMENT":
-      return { ...state, count: state.count + 1 };
+    case ADD:
+      return { ...state, cart: [...state.cart, action.payload.item]};
 
-    case "DECREMENT":
-      return { ...state, count: state.count - 1 };
-
+    case DELETE:
+      return { 
+        ...state, cart: state.cart.filter(item =>Object.keys(item)[0]=== action.payload.id )
+      };
+    
     default:
       return state;
   }

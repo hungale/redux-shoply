@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { deleteItem} from "./actions";
+import { deleteItem } from "./actions";
 
 const Cart = () => {
 
@@ -9,6 +9,7 @@ const Cart = () => {
   const deleteIt = (id) => {
     dispatch(deleteItem(id)); 
   }
+
 
   return(
     <div>

@@ -1,38 +1,47 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import "./ProductList.css";
-import { addItem} from "./actions";
+import { addItem, deleteItem} from "./actions";
 import Cart from "./Cart";
+import { v4 as uuid } from 'uuid';
 
 const ProductList = () => {
-  const { products } = useSelector(store => store);
+  const { products, cart } = useSelector(store => store);
   const dispatch = useDispatch();
-  const add = (item, id) => {
-    item.id =id;
+  const add = (item) => {
+    item.cart_id = uuid();
     dispatch(addItem(item)); 
   }
 
+  const deleteIt = (id) => {
+    dispatch(deleteItem(id)); 
+  }
 
-  const productKeys = Object.keys(products);
-  
+
   const renderProducts = () => (
-    productKeys.map(key => {
-      const product = products[key];
-      return <li>
-        <p>{product.name} Price:{product.price} </p>
+    products.map(product => {
+      return (
+      <li key={product.id}>
+        <h3>{product.name}</h3>
+        <p>Price:{product.price}</p>
         <img src = {product.image_url} alt={product.name} />
-        <button onClick={()=>add(product, key)}>Add</button>
+        <div>
+        <button onClick={()=>add(product)}>Add</button>
+        <button onClick={()=>deleteIt(product.id)}>Delete</button>
+        </div>
       </li>
-    })
+    )})
   );
 
-
+  // console.log(cart);
+  // console.log(products);
 
   return (
     <div className="ProductList">
-      <p>Cart</p>
+      <p>Cart: {cart.length}</p>
       <Cart/>
       <hr />
+      <p>Product List</p>
       <ul>
       {renderProducts()}
       </ul>

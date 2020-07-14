@@ -9,7 +9,7 @@ const ProductList = () => {
   const { products, cart } = useSelector(store => store);
   const dispatch = useDispatch();
   const add = (item) => {
-    item.cart_id = uuid();
+    // item.cart_id = uuid();
     dispatch(addItem(item)); 
   }
 
@@ -41,9 +41,9 @@ const ProductList = () => {
       <p>Cart: {cart.length}</p>
       <Cart/>
       <hr />
-      <p>Product List</p>
       <ul>
-      {renderProducts()}
+        <p>Product List</p>
+        {renderProducts()}
       </ul>
     </div>
   );

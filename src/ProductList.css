@@ -4,12 +4,19 @@ img {
 }
 
 ul {
-  
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  flex-direction: column;
 }
 
 li {
   list-style: none;
   border: 1px solid black;
   width: 80%;
+}
 
+button {
+  padding: 10px 20px;
+  margin: 5px;
 }

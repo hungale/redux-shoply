@@ -2,9 +2,6 @@ import rootReducer from "./rootReducer";
 
 describe("rootReducer works", () => {
   it("works for ADD", () => {
-    console.log(
-      rootReducer({ cart: [] }, { type: "ADD", payload: { item: "..." } })
-    );
     expect(
       rootReducer({ cart: [] }, { type: "ADD", payload: "..."  })
     ).toEqual({ cart: ["..."] });

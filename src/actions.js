@@ -1,4 +1,4 @@
-import { ADD, DELETE } from "./actionTypes";
+import { ADD, DELETE, DELETE_FROM_CART, ADD_FROM_CART } from "./actionTypes";
 
 export function addItem(item) {
   return {
@@ -13,3 +13,16 @@ export function deleteItem(id) {
     payload: id
   }
 };
+export function deleteCartItem(id) {
+  return {
+    type: DELETE_FROM_CART,
+    payload: id
+  }
+};
+
+export function addCartItem(id) {
+  return {
+    type: ADD_FROM_CART,
+    payload: id
+  }
+}
